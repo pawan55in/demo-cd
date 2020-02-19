@@ -38,8 +38,7 @@ pipeline {
 
     stage('Build') {
 	   steps{
-        milestone()
-        sh 'ng build --prod --build-optimizer'
+          sh 'ng build --prod --build-optimizer'
 		}
     }      
     
