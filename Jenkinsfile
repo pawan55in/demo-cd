@@ -41,15 +41,7 @@ pipeline {
         milestone()
         sh 'ng build --prod --build-optimizer'
 		}
-    }
-	
-	
-      post {
-          always {
-            junit "test-results.xml"
-          }
-      }
-       
+    }      
     
     stage ('build image') {
       steps{
