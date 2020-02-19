@@ -1,11 +1,9 @@
 pipeline {
   agent any
   stages {
-    stage('Provisioning') {
-      
-	  
-	parallel {
-    stage('Checkout') {
+    stage('Provisioning') { 
+	  parallel {
+       stage('Checkout') {
         steps{
         checkout scm
         }
@@ -20,6 +18,7 @@ pipeline {
         }
 	  }
 	 }
+	} 
     
    
     stage('Test') {
@@ -68,4 +67,4 @@ pipeline {
     }
    }
   }
- }
+ 
