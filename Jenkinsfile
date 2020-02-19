@@ -31,7 +31,7 @@ pipeline {
         sh '''
 		  cd angular-seed
 		  npm install karma-junit-reporter --save-dev
-		  export CHROME_BIN=/usr/local/bin/my-chrome-build
+		  export CHROME_BIN=/usr/bin/google-chrome
           sh scripts/test.sh &
         '''
         
@@ -55,7 +55,7 @@ pipeline {
 	    steps{
         sh '''
 		  cd angular-seed
-		  export CHROME_BIN=/usr/local/bin/my-chrome-build
+		  export CHROME_BIN=/usr/bin/google-chrome
           sh scripts/e2e-test.sh &
         '''
         
