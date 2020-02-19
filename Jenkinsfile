@@ -16,7 +16,7 @@ pipeline {
 	     steps{
         sh '''
           cd angular-seed
-		  npm install --verbose -d 
+		  npm install -g  karma
            
         '''
         }
