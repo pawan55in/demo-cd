@@ -17,7 +17,7 @@ pipeline {
     stage('Provisioning') {
       parallel {
 
-node {
+
     stage('Checkout') {
         //disable to recycle workspace data to save time/bandwidth
         deleteDir()
@@ -59,7 +59,7 @@ node {
     stage('Deploy') {
         milestone()
         echo "Deploying..."
-     }
+     
     }
    }
   }
