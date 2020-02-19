@@ -75,23 +75,26 @@ pipeline {
 
     stage('Build') {
 	   steps{
-          sh 'ng build --prod --build-optimizer'
+	      cd /root/test2
+          'ng build --prod --build-optimizer'
 		}
     }      
     
     stage ('build image') {
       steps{
         sh '''
-          rm -rf node_modules
-          oc start-build angular-5-example --from-dir=. --follow
+          echo "Build Completed" 
+          
         '''
       }
     }
      stage('Deploy') {
 	   steps{
-        
-        echo "Deploying..."
-		}     
+        sh '''
+        node scripts/web-server.js &
+		'''
+		} 
+       		
     }
    }
   }
