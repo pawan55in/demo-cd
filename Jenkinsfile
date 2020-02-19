@@ -15,8 +15,9 @@ pipeline {
     stage('NPM Install') {
 	     steps{
         sh '''
-          npm install --verbose -d 
-          npm install --save classlist.js
+          cd angular-seed
+		  npm install --verbose -d 
+           
         '''
         }
 	  }
@@ -24,10 +25,10 @@ pipeline {
 	} 
     
    
-    stage('Test') {
+    stage('Unit Test') {
 	    steps{
         sh '''
-          $(npm bin)/ng test --single-run --browsers Chrome_no_sandbox
+          sh scripts/test.sh
         '''
         junit '**/test-results.xml'
 		}
@@ -35,7 +36,9 @@ pipeline {
 
     stage('code quality') {
 	  steps{
-        sh 'ng lint'
+        sh '''
+		npm run  lint
+		'''
 		}
     }
 
