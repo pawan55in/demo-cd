@@ -1,13 +1,21 @@
 {
   "name": "angularjs-seed",
   "description": "A starter project for AngularJS",
-  "repository": "https://github.com/angular/angular-seed",
+  "repository": "://github.com/pawan55in/demo-cd.git",
   "devDependencies": {
-    "phantomjs" : "~1.9",
-    "karma" : "~0.10",
-    "karma-junit-reporter" : "~0.1",
-    "karma-jasmine" : "~0.1",
-    "karma-ng-scenario" : "~0.1"
-    
+    "angular-mocks": "^1.7.5",
+    "cpx": "^1.5.0",
+    "http-server": "^0.11.1",
+    "jasmine-core": "^3.3.0",
+    "karma": "^3.1.1",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-firefox-launcher": "^1.1.0",
+    "karma-jasmine": "^1.1.2",
+    "protractor": "^5.4.1",
+    "phantomjs": "~1.9"
+  },
+  "dependencies": {
+    "jasmine-core": "^3.5.0",
+    "phantom": "^3.2.1"
   }
 }
