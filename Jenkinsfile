@@ -28,9 +28,10 @@ pipeline {
     stage('Unit Test') {
 	    steps{
         sh '''
+		  cd angular-seed
 		  npm install karma-junit-reporter --save-dev
 		  export CHROME_BIN=/usr/local/bin/my-chrome-build
-          sh angular-seed/scripts/test.sh &
+          sh scripts/test.sh &
         '''
         junit '**/test-results.xml'
 		}
