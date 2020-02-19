@@ -24,7 +24,8 @@ pipeline {
 	 }
 	} 
     
-   
+   stage('Code Quality') { 
+	  parallel {
     stage('Unit Test') {
 	    steps{
         sh '''
@@ -37,14 +38,40 @@ pipeline {
 		}
     }
 
-    stage('code quality') {
+    stage('Lint Test') {
 	  steps{
         sh '''
 		cd /root/test2 
 		npm run  lint
 		'''
 		}
+       }
+	  }
+	}
+	
+    stage('Product Quality') { 
+	  parallel {
+    stage('END to End Test') {
+	    steps{
+        sh '''
+		  cd angular-seed
+		  export CHROME_BIN=/usr/local/bin/my-chrome-build
+          sh scripts/e2e-test.sh &
+        '''
+        junit '**/test-results.xml'
+		}
     }
+
+    stage('OWASP Security Scaning') {
+	  steps{
+        sh '''
+		cd /root/test2 
+		npm run  lint
+		'''
+		}
+       }
+	  }
+	}
 
     stage('Build') {
 	   steps{
