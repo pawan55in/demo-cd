@@ -34,7 +34,7 @@ pipeline {
 		  export CHROME_BIN=/usr/local/bin/my-chrome-build
           sh scripts/test.sh &
         '''
-        junit '**/test-results.xml'
+        
 		}
     }
 
@@ -58,7 +58,7 @@ pipeline {
 		  export CHROME_BIN=/usr/local/bin/my-chrome-build
           sh scripts/e2e-test.sh &
         '''
-        junit '**/test-results.xml'
+        
 		}
     }
 
