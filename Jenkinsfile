@@ -2,9 +2,9 @@ pipeline {
   agent any
   stages {
     stage('Provisioning') {
-      parallel {
-
-
+      
+	  
+	parallel {
     stage('Checkout') {
         steps{
         checkout scm
@@ -12,9 +12,11 @@ pipeline {
     }
 
     stage('NPM Install') {
+	     steps{
         withEnv(["NPM_CONFIG_LOGLEVEL=warn"]) {
             sh 'npm install'
         }
+	  }
     }
    }
     stage('Test') {
