@@ -13,6 +13,6 @@
     "karma-jasmine": "^1.1.2",
     "protractor": "^5.4.1"
     
-  },
+  }
   
 }
