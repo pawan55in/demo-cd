@@ -28,7 +28,7 @@ pipeline {
     stage('Unit Test') {
 	    steps{
         sh '''
-          sh scripts/test.sh
+          sh angular-seed/scripts/test.sh
         '''
         junit '**/test-results.xml'
 		}
@@ -37,6 +37,7 @@ pipeline {
     stage('code quality') {
 	  steps{
         sh '''
+		cd /root/test2 
 		npm run  lint
 		'''
 		}
