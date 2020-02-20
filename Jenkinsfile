@@ -113,7 +113,9 @@ pipeline {
            sh '''
 		    cd /root/test2 
 		    retire --exitwith 0
-		'''
+		    '''
+		    }
+           }		
 		stage('Acceptance Test') {
 	     steps{
            sh '''
@@ -126,6 +128,6 @@ pipeline {
           }
 	     }
 	    }
-      }
-    }
+      
+    
    
