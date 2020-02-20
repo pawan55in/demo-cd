@@ -62,11 +62,11 @@ pipeline {
 		}
     }
 
-    stage('OWASP Security Scaning') {
+    stage(' security vulnerability Scaning') {
 	  steps{
         sh '''
 		cd /root/test2 
-		npm run  lint
+		retire
 		'''
 		}
        }
