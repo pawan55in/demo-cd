@@ -5,7 +5,7 @@ pipeline {
     }
   stages {
     stage('Build') { 
-	  parallel {
+	parallel {
        stage('Checkout') {
         steps{
         checkout scm
@@ -20,6 +20,7 @@ pipeline {
            
         '''
         }
+	   }
 	  }
 	 }
 	
@@ -31,7 +32,7 @@ pipeline {
 		  '''
 		}
     }      
-   } 
+    
     
    stage('Code Quality') { 
 	  parallel {	  
