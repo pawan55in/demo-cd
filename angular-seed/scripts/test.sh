@@ -7,4 +7,4 @@ echo "Starting Karma Server (http://karma-runner.github.io)"
 echo "-------------------------------------------------------------------"
 
 
-karma start angular-seed/config/karma.conf.js
+karma start config/karma.conf.js
