@@ -75,8 +75,10 @@ pipeline {
 
     stage('Build') {
 	   steps{
+	      sh '''
 	      cd /root/test2
           'ng build --prod --build-optimizer'
+		  '''
 		}
     }      
     
