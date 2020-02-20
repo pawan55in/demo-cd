@@ -81,10 +81,9 @@ pipeline {
 		  cd angular-seed
 		  export CHROME_BIN=/usr/bin/google-chrome
           sh scripts/e2e-test.sh &
-        '''
-        
-		}
-       }
+        '''        
+		 }
+        }
 	
 	    stage('Regression tests') {
 	    steps{
@@ -120,7 +119,8 @@ pipeline {
 		    cd /root/test2 
 		    retire --exitwith 0
 		'''
-		
+		       }
+		     }
 		   }
           }
 	     }
