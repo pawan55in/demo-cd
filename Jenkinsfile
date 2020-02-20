@@ -4,7 +4,7 @@ pipeline {
         parallelsAlwaysFailFast()
     }
   stages {
-    stage('Provisioning') { 
+    stage('Build') { 
 	  parallel {
        stage('Checkout') {
         steps{
@@ -12,7 +12,7 @@ pipeline {
         }
     }
 
-    stage('NPM Install') {
+    stage('PreBuild Setup') {
 	     steps{
         sh '''
           cd angular-seed
@@ -22,36 +22,60 @@ pipeline {
         }
 	  }
 	 }
-	} 
+	
+	 stage('Compile') {
+	   steps{
+	      sh '''
+	      cd /root/test2
+          ng build --watch
+		  '''
+		}
+    }      
+   } 
     
    stage('Code Quality') { 
 	  parallel {
-    stage('Unit Test') {
+	  
+	   stage('Lint Test') {
 	    steps{
-        sh '''
-		  cd angular-seed
-		  npm install karma-junit-reporter --save-dev
-		  export CHROME_BIN=/usr/bin/google-chrome
-          sh scripts/test.sh &
-        '''
-        
-		}
-    }
-
-    stage('Lint Test') {
-	  steps{
         sh '''
 		cd /root/test2 
 		npm run  lint
 		'''
 		}
        }
-	  }
-	}
+       stage('Unit Test') {
+	    steps{
+        sh '''
+		  cd angular-seed
+		  npm install karma-junit-reporter --save-dev
+		  export CHROME_BIN=/usr/bin/google-chrome
+          sh scripts/test.sh 
+        '''        
+		}
+   	  }
+	 }
+	 
+	 stage('Package') {
+	   steps{
+	      sh '''
+	      cd /root/test2
+          ng build --prod
+		  '''
+		}
+       }
+      }
 	
-    stage('Product Quality') { 
+    stage('Staging') { 
+	   stage('Stg Deploy') {
+	   steps{
+        sh '''
+        node scripts/web-server.js &
+		'''
+		} 
+	  
 	  parallel {
-    stage('END to End Test') {
+       	stage('Functional tests') {
 	    steps{
         sh '''
 		  cd angular-seed
@@ -60,44 +84,40 @@ pipeline {
         '''
         
 		}
-    }
-
-    stage(' security vulnerability Scaning') {
-	  steps{
+       }
+	
+	    stage('Regression tests') {
+	    steps{
         sh '''
-		cd /root/test2 
-		retire --exitwith 0
-		'''
+		  cd angular-seed
+		  export CHROME_BIN=/usr/bin/google-chrome
+          sh scripts/e2e-test.sh &
+        '''
+        
 		}
        }
-	  }
-	}
-
-    stage('Build') {
-	   steps{
-	      sh '''
-	      cd /root/test2
-          ng build --prod --build-optimizer
-		  '''
-		}
-    }      
-    
-    stage ('build image') {
-      steps{
+	
+	    stage('Performance Test') {
+	    steps{
         sh '''
-          echo "Build Completed" 
-          
+		  cd angular-seed
+		  export CHROME_BIN=/usr/bin/google-chrome
+          sh scripts/e2e-test.sh &
         '''
+        
+		}
+       }
+
+        stage('Security Test') {
+	     steps{
+           sh '''
+		    cd /root/test2 
+		    retire --exitwith 0
+		'''
+		   }
+          }
+	     }
+	    }
       }
     }
-     stage('Deploy') {
-	   steps{
-        sh '''
-        node scripts/web-server.js &
-		'''
-		} 
-       		
-    }
    }
-  }
- 
