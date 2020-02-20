@@ -34,8 +34,7 @@ pipeline {
    } 
     
    stage('Code Quality') { 
-	  parallel {
-	  
+	  parallel {	  
 	   stage('Lint Test') {
 	    steps{
         sh '''
@@ -55,6 +54,7 @@ pipeline {
 		}
    	  }
 	 }
+	} 
 	 
 	 stage('Package') {
 	   steps{
@@ -64,10 +64,10 @@ pipeline {
 		  '''
 		}
        }
-      }
+      
 	
-    stage('Staging') { 
-	   stage('Stg Deploy') {
+     
+	   stage(' Deploy') {
 	   steps{
         sh '''
         node scripts/web-server.js &
@@ -128,4 +128,4 @@ pipeline {
 	    }
       }
     }
-   }
+   
