@@ -66,7 +66,7 @@ pipeline {
 	  steps{
         sh '''
 		cd /root/test2 
-		retire
+		retire --exitwith 0
 		'''
 		}
        }
