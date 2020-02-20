@@ -28,7 +28,7 @@ pipeline {
 	   steps{
 	      sh '''
 	      cd /root/test2
-          ng build --watch
+          ng build --prod
 		  '''
 		}
     }      
