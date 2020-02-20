@@ -74,7 +74,7 @@ pipeline {
 		'''
 		} 
 	   }	
-	 Stage ('Product Testing') {
+	 Stage('Product Testing') {
 	  parallel {
        	stage('Functional tests') {
 	    steps{
