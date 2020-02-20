@@ -73,7 +73,8 @@ pipeline {
         node scripts/web-server.js &
 		'''
 		} 
-	  
+	   }	
+	 Stage ('Product Testing') {
 	  parallel {
        	stage('Functional tests') {
 	    steps{
