@@ -52,7 +52,8 @@ pipeline {
 		  npm i
 		  npm install -g karma-cli
 		  npm install karma-junit-reporter --save-dev 
-          npm install karma-phantomjs-launcher --save-dev	  
+          npm install karma-phantomjs-launcher --save-dev
+          sh scripts/test.sh &		  
           
         '''        
 		  		       
@@ -85,8 +86,7 @@ pipeline {
 	    steps{
         sh '''
 		  cd angular-seed
-		  export CHROME_BIN=/usr/bin/google-chrome
-          sh scripts/e2e-test.sh &
+		  sh scripts/e2e-test.sh &
         '''        
 		 }
         }
@@ -95,8 +95,7 @@ pipeline {
 	    steps{
         sh '''
 		  cd angular-seed
-		  export CHROME_BIN=/usr/bin/google-chrome
-          sh scripts/e2e-test.sh &
+		  sh scripts/e2e-test.sh &
         '''
         
 		}
@@ -106,8 +105,7 @@ pipeline {
 	    steps{
         sh '''
 		  cd angular-seed
-		  export CHROME_BIN=/usr/bin/google-chrome
-          sh scripts/e2e-test.sh &
+		  sh scripts/e2e-test.sh &
             '''
         
 		}
