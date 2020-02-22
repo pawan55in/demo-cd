@@ -16,26 +16,22 @@ module.exports = function(config){
       'app/lib/angular/angular-scenario.js'
     ],
 
-    autoWatch : false,
-	singleRun: true,
 
     frameworks: ['jasmine'],
 
-    browsers : ['PhantomJS'],
-
     plugins : [
+            'karma-phantomjs-launcher',
             'karma-junit-reporter',
-            'karma-chrome-launcher',
-            'karma-firefox-launcher',
-            'karma-jasmine',
-			'karma-phantomjs-launcher',
-            '@angular/cli/plugins/karma'
+            'karma-jasmine'
             ],
 
     junitReporter : {
-      outputFile: 'test_out/unit.xml',
+      outputFile: 'unit.xml',
       
-    }
-	
+    },
+    autoWatch : false,
+    singleRun: true,
+    browsers : ['PhantomJS'],
+    reporters: ['junit']            
 
 })}
