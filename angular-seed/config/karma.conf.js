@@ -19,7 +19,7 @@ module.exports = function(config){
     autoWatch : false,
 	singleRun: true
 
-    frameworks: ['jasmine', '@angular/cli'],
+    frameworks: ['jasmine'],
 
     browsers : ['PhantomJS'],
 
@@ -27,7 +27,9 @@ module.exports = function(config){
             'karma-junit-reporter',
             'karma-chrome-launcher',
             'karma-firefox-launcher',
-            'karma-jasmine'
+            'karma-jasmine',
+			'karma-phantomjs-launcher',
+            '@angular/cli/plugins/karma'
             ],
 
     junitReporter : {
