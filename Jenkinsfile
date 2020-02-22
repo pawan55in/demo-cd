@@ -48,7 +48,8 @@ pipeline {
 	    steps{
         sh '''
 		  cd angular-seed
-		  npm install 		  
+		  npm install 
+          npm install karma-phantomjs-launcher --save-dev		  
           sh scripts/test.sh 
         '''        
 		}
