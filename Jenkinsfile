@@ -41,6 +41,7 @@ pipeline {
         sh '''
 		cd /root/test2 
 		npm run  lint
+		
 		'''
 		}
        }
@@ -52,6 +53,13 @@ pipeline {
 		  npm install -g karma-cli
 		  npm install karma-junit-reporter --save-dev 
           npm install karma-phantomjs-launcher --save-dev		  
+          sh scripts/test.sh 
+        '''        
+		}
+		
+		steps{
+        sh '''
+		  	  
           sh scripts/test.sh 
         '''        
 		}
