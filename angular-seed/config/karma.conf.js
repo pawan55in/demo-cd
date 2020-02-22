@@ -32,6 +32,7 @@ module.exports = function(config){
     autoWatch : false,
     singleRun: true,
     browsers : ['PhantomJS'],
-    reporters: ['junit']            
+    reporters: ['junit'],
+    failOnEmptyTestSuite: false	
 
 })}
