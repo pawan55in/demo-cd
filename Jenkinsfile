@@ -52,16 +52,10 @@ pipeline {
 		  npm i
 		  npm install -g karma-cli
 		  npm install karma-junit-reporter --save-dev 
-          npm install karma-phantomjs-launcher --save-dev		  
+          npm install karma-phantomjs-launcher --save-dev	  
           
         '''        
-		}
-		
-		steps{
-        sh '''
-		  	  
-          sh scripts/test.sh 
-        '''        
+		  }		       
 		}
    	  }
 	 }
