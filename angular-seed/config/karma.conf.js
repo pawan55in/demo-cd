@@ -16,9 +16,10 @@ module.exports = function(config){
       'app/lib/angular/angular-scenario.js'
     ],
 
-    autoWatch : true,
+    autoWatch : false,
+	singleRun: true
 
-    frameworks: ['jasmine'],
+    frameworks: ['jasmine', '@angular/cli'],
 
     browsers : ['PhantomJS'],
 
@@ -31,7 +32,8 @@ module.exports = function(config){
 
     junitReporter : {
       outputFile: 'test_out/unit.xml',
-      suite: 'unit'
+      
     }
+	
 
 })}
