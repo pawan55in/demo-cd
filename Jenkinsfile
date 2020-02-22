@@ -55,7 +55,7 @@ pipeline {
           npm install karma-phantomjs-launcher --save-dev	  
           
         '''        
-		  }		       
+		  		       
 		}
    	  }
 	 }
