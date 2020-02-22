@@ -17,9 +17,9 @@ module.exports = function(config){
     ],
 
     autoWatch : false,
-	singleRun: true
+	singleRun: true,
 
-    frameworks: ['jasmine'],
+    frameworks: ['jasmine', '@angular/cli'],
 
     browsers : ['PhantomJS'],
 
